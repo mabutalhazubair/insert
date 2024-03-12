@@ -1,0 +1,18 @@
+if(isset($_POST['buy_reviews'])){
+            
+            $product_name = $_POST['product_name'];
+            $product_reviews = $_POST['product_reviews'];
+            $product_amount = $_POST['product_amount'];
+            $seller_id = $_POST['seller_id'];
+            
+            $insert_reviews_buy = "INSERT INTO buy_reviews(product_name, product_reviews, product_amount, seller_id) VALUES ('$product_name', '$product_reviews', '$product_amount', '$seller_id')";
+            $insert_reviews_buy_query = mysqli_query($con, $insert_reviews_buy);
+            if($insert_reviews_buy_query){
+                $_SESSION['buy_reviews_apply_successfully'] = 'Apply Successfully';
+                header('Location: buy-reviews.php');
+            }else{
+                $_SESSION['buy_reviews_apply_error'] = 'Apply Error';
+                header('Location: buy-reviews.php');
+            }
+            
+        }
